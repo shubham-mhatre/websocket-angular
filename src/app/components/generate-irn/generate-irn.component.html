@@ -1,0 +1,32 @@
+<div class="container">
+    <form [formGroup]="generateIRNForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline">
+        <mat-label>Invoice Number</mat-label>
+        <input matInput formControlName="invoiceNumber" placeholder="Enter Invoice Number" required>
+        <mat-error *ngIf="generateIRNForm.controls['invoiceNumber'].hasError('required')">
+          Invoice Number is required
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+        <mat-label>Invoice Amount</mat-label>
+        <input matInput formControlName="invoiceAmount" placeholder="Enter Invoice Amount" required type="number">
+        <mat-error *ngIf="generateIRNForm.controls['invoiceAmount'].hasError('required')">
+          Invoice Amount is required
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+        <mat-label>Doc Date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="docDate" placeholder="Select Doc Date" required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="generateIRNForm.controls['docDate'].hasError('required')">
+          Doc Date is required
+        </mat-error>
+      </mat-form-field>
+  
+      <button mat-raised-button color="primary" type="submit" [disabled]="generateIRNForm.invalid">Save</button>
+    </form>
+  </div>
+  

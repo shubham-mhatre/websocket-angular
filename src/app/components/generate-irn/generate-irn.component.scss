@@ -1,0 +1,30 @@
+/* Center the form */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75vh;
+    background-color: white;
+  }
+  
+  /* Form styles */
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    padding: 20px;
+    background-color: #f5f5f5; /* Light background for the page */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Lifted effect */
+    border-radius: 8px; /* Rounded corners */
+  }
+  
+  /* Input field margins */
+  mat-form-field {
+    margin-bottom: 20px;
+  }
+  
+  /* Align the submit button to the right */
+  button {
+    align-self: flex-end;
+  }
+  

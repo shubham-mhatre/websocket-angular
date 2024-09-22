@@ -1,0 +1,39 @@
+<mat-toolbar color="primary">
+  <span>Websocket Demo App</span>
+  
+  <span class="spacer"></span>
+
+  <a mat-button routerLink="/generate-invoice" routerLinkActive="active-link">Generate Invoice</a>
+  <a mat-button routerLink="/cancel-invoice" routerLinkActive="active-link">Cancel Invoice</a>
+  
+  <!-- Notification Bell Icon -->
+  <button mat-icon-button [matMenuTriggerFor]="notificationMenu">
+    <mat-icon>notifications</mat-icon>
+    <span *ngIf="notifications.length > 0" class="notification-count">
+      {{ notifications.length > 10 ? '10+' : notifications.length }}
+    </span>
+  </button>
+  
+  <!-- Notification Menu -->
+  <mat-menu #notificationMenu="matMenu" class="notification-box">
+    <!-- Display total number of notifications at the top -->
+    <div class="notification-header">
+      <strong>You have {{ notifications.length }} notifications</strong>
+    </div>
+
+    <!-- Notification List -->
+    <div class="notification-list" *ngIf="notifications.length > 0">
+      <div class="notification-row" *ngFor="let notification of notifications; let i = index">
+        <span class="notification-text">{{ notification }}</span>
+        <button mat-icon-button (click)="dismissNotification(i)">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Dismiss All Button -->
+    <button mat-button class="dismiss-all-btn" (click)="dismissAllNotifications()">
+      Dismiss All
+    </button>
+  </mat-menu>
+</mat-toolbar>
